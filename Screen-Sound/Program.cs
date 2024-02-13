@@ -1,4 +1,7 @@
-﻿void ShowMessage()
+﻿// Screen Sound
+List<string> bandsList = new List<string> { "AC/DC", "Nirvana", "Gun's in Roses" };
+
+void ShowMessage()
 {
     Console.WriteLine(@"
         
@@ -33,7 +36,7 @@ void ShowOptions()
             break;
 
         case 2:
-            Console.WriteLine("You want show all bands");
+            ShowAllBands();
             break;
 
         case 3:
@@ -59,14 +62,53 @@ void ShowOptions()
 void RegisterBand()
 {
     Console.Clear();
-    Console.WriteLine("Band's Register");
+    title("Band's Register");
     Console.Write("Type the band's name do you want register: ");
     string bandName = Console.ReadLine()!;
+    bandsList.Add(bandName);
     Thread.Sleep(2000);
     Console.WriteLine($"The band {bandName} was succesfully registered");
     Thread.Sleep(2000);
     Console.Clear();
     ShowOptions();
+}
+
+void ShowAllBands()
+{
+    Console.Clear();
+    title("Show All Bands");
+    if (bandsList.Count <= 0)
+    {
+        Console.WriteLine("Not have any Bands Registered!");
+        Console.WriteLine("Returning to menu in 5 secconds");
+        Thread.Sleep(5000);
+        Console.Clear();
+        ShowOptions();
+    } else
+    {
+        //for (int i = 0; i < bandsList.Count; i++)
+        //{
+        //    Console.WriteLine($"Band's Name: {bandsList[i]}");
+        //}
+        foreach (string bandName in bandsList)
+        {
+            Console.WriteLine($"Band's Name: {bandName}");
+        }
+        Console.WriteLine("Type any key to return to menu");
+        Console.ReadKey();
+        Console.Clear();
+        ShowOptions();
+    }
+}
+
+void title(string title)
+{
+    int qntTitle = title.Length;
+    string symbols = string.Empty.PadLeft(qntTitle, '*');
+
+    Console.WriteLine(symbols);
+    Console.WriteLine(title);
+    Console.WriteLine(symbols + "\n");
 }
 
 ShowOptions();
