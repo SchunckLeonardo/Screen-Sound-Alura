@@ -14,6 +14,7 @@
 
 void ShowOptions()
 {
+    ShowMessage();
     Console.WriteLine("1 - Register a band");
     Console.WriteLine("2 - Show all bands");
     Console.WriteLine("3 - Rate a band");
@@ -27,8 +28,8 @@ void ShowOptions()
 
     switch (userOptionInt)
     {
-        case 1: 
-            Console.WriteLine("You want register a band");
+        case 1:
+            RegisterBand();
             break;
 
         case 2:
@@ -55,5 +56,17 @@ void ShowOptions()
     }
 }
 
-ShowMessage();
+void RegisterBand()
+{
+    Console.Clear();
+    Console.WriteLine("Band's Register");
+    Console.Write("Type the band's name do you want register: ");
+    string bandName = Console.ReadLine()!;
+    Thread.Sleep(2000);
+    Console.WriteLine($"The band {bandName} was succesfully registered");
+    Thread.Sleep(2000);
+    Console.Clear();
+    ShowOptions();
+}
+
 ShowOptions();
