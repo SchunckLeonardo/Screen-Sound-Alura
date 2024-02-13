@@ -1,7 +1,10 @@
 ﻿// Screen Sound
 //List<string> bandsList = new() { "AC/DC", "Nirvana", "Gun's in Roses" };
 
-Dictionary<string, List<double>> bandsDictionary = new();
+Dictionary<string, List<int>> bandsDictionary = new()
+{
+    { "leo", new List<int> { 10, 5, 8 } }
+};
 
 void ShowMessage()
 {
@@ -46,7 +49,7 @@ void ShowOptions()
             break;
 
         case 4:
-            Console.WriteLine("You want show band media");
+            ShowBandMedia();
             break;
 
         case 5:
@@ -67,7 +70,7 @@ void RegisterBand()
     Title("Band's Register");
     Console.Write("Type the band's name do you want register: ");
     string bandName = Console.ReadLine()!;
-    bandsDictionary.Add(bandName, new List<double>());
+    bandsDictionary.Add(bandName, new List<int>());
     Thread.Sleep(2000);
     Console.WriteLine($"The band {bandName} was succesfully registered");
     Thread.Sleep(2000);
@@ -119,21 +122,47 @@ void RateBand()
     Title("Rate a Band");
 
     Console.Write("Type a band's name to rate: ");
-    string bandNameRate = Console.ReadLine()!;
+    string bandName = Console.ReadLine()!;
 
-    if (bandsDictionary.ContainsKey(bandNameRate))
+    if (bandsDictionary.ContainsKey(bandName))
     {
-        Console.Write($"Type a number to rate {bandNameRate}: ");
-        double bandRateUser = Double.Parse(Console.ReadLine()!);
-        bandsDictionary[bandNameRate].Add(bandRateUser);
-        Console.WriteLine($"You typed {bandRateUser} to {bandNameRate}\n");
+        Console.Write($"Type a number to rate {bandName}: ");
+        int bandRateUser = int.Parse(Console.ReadLine()!);
+        bandsDictionary[bandName].Add(bandRateUser);
+        Console.WriteLine($"You typed {bandRateUser} to {bandName}\n");
         Console.WriteLine("Returning to menu in 3 secconds");
         Thread.Sleep(3000);
         Console.Clear();
         ShowOptions();
     } else
     {
-        Console.WriteLine($"The band {bandNameRate} wasn't register");
+        Console.WriteLine($"The band {bandName} wasn't register");
+        Console.WriteLine("Returning to menu in 3 secconds");
+        Thread.Sleep(3000);
+        Console.Clear();
+        ShowOptions();
+    }
+}
+
+void ShowBandMedia()
+{
+    Console.Clear();
+    Title("Show Band's Media");
+
+    Console.Write("Type the band's name to search in database: ");
+    string bandName = Console.ReadLine()!;
+
+    if (bandsDictionary.ContainsKey(bandName))
+    {
+        List<int> bandRate = bandsDictionary[bandName];
+        Console.Write($"{bandName} rate's media: {bandRate.Average().ToString("F2")}\n");
+        Console.WriteLine("Type any key to return to menu");
+        Console.ReadKey();
+        Console.Clear();
+        ShowOptions();
+    } else
+    {
+        Console.WriteLine($"The band {bandName} wasn't register");
         Console.WriteLine("Returning to menu in 3 secconds");
         Thread.Sleep(3000);
         Console.Clear();
