@@ -1,6 +1,25 @@
-﻿string curso = "C#: Criando sua primeira aplicação";
-Console.WriteLine(curso);
+﻿void ShowMessage()
+{
+    Console.WriteLine(@"
+        
+░██████╗░█████╗░██████╗░███████╗███████╗███╗░░██╗  ░██████╗░█████╗░██╗░░░██╗███╗░░██╗██████╗░
+██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝████╗░██║  ██╔════╝██╔══██╗██║░░░██║████╗░██║██╔══██╗
+╚█████╗░██║░░╚═╝██████╔╝█████╗░░█████╗░░██╔██╗██║  ╚█████╗░██║░░██║██║░░░██║██╔██╗██║██║░░██║
+░╚═══██╗██║░░██╗██╔══██╗██╔══╝░░██╔══╝░░██║╚████║  ░╚═══██╗██║░░██║██║░░░██║██║╚████║██║░░██║
+██████╔╝╚█████╔╝██║░░██║███████╗███████╗██║░╚███║  ██████╔╝╚█████╔╝╚██████╔╝██║░╚███║██████╔╝
+╚═════╝░░╚════╝░╚═╝░░╚═╝╚══════╝╚══════╝╚═╝░░╚══╝  ╚═════╝░░╚════╝░░╚═════╝░╚═╝░░╚══╝╚═════╝░
+    ");
+    Console.WriteLine("Welcome to the Screen Sound\n");
+}
 
-string nome = "Leonardo";
-string sobrenome = "Schunck";
-Console.WriteLine(nome + sobrenome);
+void ShowOptions()
+{
+    Console.WriteLine("1 - Register a band");
+    Console.WriteLine("2 - Show all bands");
+    Console.WriteLine("3 - Rate a band");
+    Console.WriteLine("4 - Show band media");
+    Console.WriteLine("5 - Exit Program");
+}
+
+ShowMessage();
+ShowOptions();
